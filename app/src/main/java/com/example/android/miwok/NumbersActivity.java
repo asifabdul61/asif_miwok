@@ -3,6 +3,7 @@ package com.example.android.miwok;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutCompat;
+import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -16,13 +17,31 @@ public class NumbersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_numbers);
 
-        int i = 0;
-        //ArrayList<int> number = new ArrayList<int>();
-        LinearLayout number_layout = (LinearLayout) findViewById(R.id.activity_numbers);
-        for(i = 0;i<40;i++){
-            TextView num = new TextView(this);
-            num.setText("" + (i+1));
-            number_layout.addView(num);
+
+        ArrayList<String> words = new ArrayList<String>();
+        words.add("one");
+        words.add("two");
+        words.add("three");
+        words.add("four");
+        words.add("five");
+        words.add("six");
+        words.add("seven");
+        words.add("eight");
+        words.add("nine");
+        words.add("ten");
+
+        Log.v("NumbersActivity", "Words at index 1 : " + words.get(1));
+
+        LinearLayout numbersView = (LinearLayout) findViewById(R.id.activity_numbers);
+        //TextView wordView = new TextView(this);
+        int index = 0;
+        int size = words.size();
+        while(index < size) {
+            TextView wordView = new TextView(this);
+            wordView.setText(words.get(index));
+            numbersView.addView(wordView);
+            index++;
         }
+
     }
 }
