@@ -3,8 +3,11 @@ package com.example.android.miwok;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutCompat;
+import android.support.v7.widget.ListViewCompat;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -18,30 +21,25 @@ public class NumbersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_numbers);
 
 
-        ArrayList<String> words = new ArrayList<String>();
-        words.add("one");
-        words.add("two");
-        words.add("three");
-        words.add("four");
-        words.add("five");
-        words.add("six");
-        words.add("seven");
-        words.add("eight");
-        words.add("nine");
-        words.add("ten");
+        ArrayList<word> words = new ArrayList<word>();
+        words.add(new word("one","onu"));
+        words.add(new word("two","rendu"));
+        words.add(new word("three","moonu"));
+        words.add(new word("four","nalu"));
+        words.add(new word("five","ainju"));
+        words.add(new word("six","aaru"));
+        words.add(new word("seven","ealu"));
+        words.add(new word("eight","aitu"));
+        words.add(new word("nine","onbadu"));
+        words.add(new word("ten","pathu"));
 
         Log.v("NumbersActivity", "Words at index 1 : " + words.get(1));
 
-        LinearLayout numbersView = (LinearLayout) findViewById(R.id.activity_numbers);
+        //LinearLayout numbersView = (LinearLayout) findViewById(R.id.activity_numbers);
         //TextView wordView = new TextView(this);
-        int index = 0;
-        int size = words.size();
-        while(index < size) {
-            TextView wordView = new TextView(this);
-            wordView.setText(words.get(index));
-            numbersView.addView(wordView);
-            index++;
-        }
+        WordAdapter itemsAdapter = new WordAdapter(this, words);
+        ListView listView = (ListView) findViewById(R.id.list);
+        listView.setAdapter(itemsAdapter);
 
     }
 }
